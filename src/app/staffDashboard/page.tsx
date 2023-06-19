@@ -1,7 +1,6 @@
 "use client"
 
 import Availabe_Test from "@/components/availableTestStaff";
-import Ncard from "@/components/notesCard";
 
 
 export default function Page() {
@@ -11,16 +10,7 @@ export default function Page() {
     <>
       <div className="mt-[70px] mb-2 mx-[70px] ">
         <h1 className="font-bold mb-2 text-[22px]"> Your Recent uploads</h1>
-        <Ncard
-          title1={"Os"}
-          title6={"Python"}
-          title2={"Java"}
-          title3={"IT skills"}
-          title4={"Maths"}
-          title5={"Os"}
-          likes={0}
-          dislikes={0}
-        />
+       
        
        <div className="mt-[50px] ">
        <h1 className="font-bold mb-2 text-[22px]"> Available tests</h1>

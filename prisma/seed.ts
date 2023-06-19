@@ -70,7 +70,7 @@ const getUsers = (
   college_code: string,
   sem_no: string,
   password: string
-): Prisma.userCreateManyInput[] => [
+): Prisma.UserCreateManyInput[] => [
   {
     first_name: faker.name.firstName(),
     last_name: faker.name.lastName(),

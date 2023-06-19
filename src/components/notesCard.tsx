@@ -10,6 +10,7 @@ import {
 import moment from "moment";
 
 export default function NotesCard({ feed }: { feed: Notes }) {
+  if (!feed) return null;
   return (
     <div className="bg-white w-full h-full rounded-md overflow-hidden border border-slate-300 cursor-pointer transition-all duration-200 hover:scale-105 hover:shadow-md">
       <div className="relative w-full h-52">

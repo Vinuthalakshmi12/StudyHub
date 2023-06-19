@@ -5,8 +5,8 @@ import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import { toast } from "react-hot-toast";
 import { AiOutlineArrowLeft } from "react-icons/ai";
-import { SupaClient } from "../../../../../utils/supabase";
-import { useAppDispatch } from "../../../../../utils/hooks";
+import { SupaClient } from "../../../../utils/supabase";
+import { useAppDispatch } from "../../../../utils/hooks";
 import { postNotes } from "@/store/notes.slice";
 
 const Subjects = [
