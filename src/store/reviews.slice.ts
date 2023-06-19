@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { SupaClient } from "../../utils/supabase";
+import { SupaClient } from "../utils/supabase";
 
 export const fetchReviews = createAsyncThunk<
   any,

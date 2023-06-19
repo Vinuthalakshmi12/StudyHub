@@ -5,7 +5,7 @@ import {
 } from "@reduxjs/toolkit";
 import { RootState } from ".";
 import { Database } from "../../types/supabase";
-import { SupaClient } from "../../utils/supabase";
+import { SupaClient } from "../utils/supabase";
 
 export const getNotes = createAsyncThunk<any, void, { rejectValue: any }>(
   "/notes/getNotes",

@@ -2,6 +2,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import { useSelector, TypedUseSelectorHook } from "react-redux";
 import { NotesSlice } from "./notes.slice";
 import { TestsSlice } from "./tests.slice";
+import auth from "./auth.slice";
 
 export const store = configureStore({
   reducer: {
@@ -14,6 +15,7 @@ export const store = configureStore({
     // [DisplaytestsresultsSlice.name]: DisplaytestsresultsSlice.reducer,
     [NotesSlice.name]: NotesSlice.reducer,
     [TestsSlice.name]: TestsSlice.reducer,
+    [auth.name]: auth.reducer,
   },
 });
 

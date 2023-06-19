@@ -1,6 +1,6 @@
 "use client"
-import { useAppSelector } from "../../store";
-import {} from "../../store/questionpaper.slice"
+import { useAppSelector } from "../../../store";
+import {} from "../../../store/questionpaper.slice"
 
 
 export default function Page() {

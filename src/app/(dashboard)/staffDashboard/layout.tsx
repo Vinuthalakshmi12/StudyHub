@@ -10,6 +10,7 @@ import { IoMdNotificationsOutline } from "react-icons/io";
 import { FaRegUser } from "react-icons/fa";
 import { BiUpload } from "react-icons/bi";
 import Link from "next/link";
+import { signOut } from "next-auth/react";
 
 interface props {
   children: React.ReactNode;
@@ -37,26 +38,28 @@ export default function RootLayout({ children }: props) {
       </nav>
       <div className="w-full h-full flex">
         <div className="h-full w-[80px] flex flex-col items-center gap-7 mt-[20px]">
-          <button
-            onClick={() => handleButtonClick(1)}
-            className={`w-full pl-[20px]  border-r-4 ${
-              selectButton === 1 ? "border-green-500" : "border-white"
-            }`}
-          >
-            <HiHome size="2rem" color="#3EB489"></HiHome>
-          </button>
           <Link href={"/staffDashboard/notes"}>
-          <button
-            onClick={() => handleButtonClick(2)}
-            className={`w-full pl-[20px] border-r-4  ${
-              selectButton === 2 ? "border-green-500" : "border-white"
-            }`}
-          >
-            <div className="flex flex-row items-baseline">
-              <BsBookHalf size="1.8rem" color="#3EB489" />
-              <BiUpload size="1.2rem" color="#3EB489" />
-            </div>
-          </button>
+            <button
+              onClick={() => handleButtonClick(1)}
+              className={`w-full pl-[20px]  border-r-4 ${
+                selectButton === 1 ? "border-green-500" : "border-white"
+              }`}
+            >
+              <HiHome size="2rem" color="#3EB489"></HiHome>
+            </button>
+          </Link>
+          <Link href={"/staffDashboard/notes"}>
+            <button
+              onClick={() => handleButtonClick(2)}
+              className={`w-full pl-[20px] border-r-4  ${
+                selectButton === 2 ? "border-green-500" : "border-white"
+              }`}
+            >
+              <div className="flex flex-row items-baseline">
+                <BsBookHalf size="1.8rem" color="#3EB489" />
+                <BiUpload size="1.2rem" color="#3EB489" />
+              </div>
+            </button>
           </Link>
 
           <button
@@ -77,7 +80,7 @@ export default function RootLayout({ children }: props) {
           </button>
 
           <button
-            onClick={() => handleButtonClick(6)}
+            onClick={() => signOut()}
             className={`w-full pl-[20px] border-r-4 ${
               selectButton === 6 ? "border-green-500" : "border-white"
             }`}

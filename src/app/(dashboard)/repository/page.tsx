@@ -1,6 +1,6 @@
 "use client"
-import { useAppSelector } from "../../store";
-import { TestsSlice, fetchTest } from "../../store/test.slice";
+import { useAppSelector } from "../../../store";
+import { TestsSlice, fetchTest } from "../../../store/test.slice";
 import { useCallback, useEffect, useState } from "react";
 import { SupaClient } from "./../../../utils/supabase";
 import { useParams } from "next/navigation";

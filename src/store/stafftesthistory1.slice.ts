@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { SupaClient } from "../../utils/supabase";
+import { SupaClient } from "../utils/supabase";
 
 interface InitialStateProps {
   data: any[];
