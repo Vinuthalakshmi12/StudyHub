@@ -1,5 +1,5 @@
 import Button from "@/components/Button"
-import FCard from "@/components/featurescard"
+import FCard from "@/components/featuredscard"
 import Link  from "next/link"
 import { AiOutlineInstagram, AiOutlineUser } from "react-icons/ai"
 import { BiRightArrow } from "react-icons/bi"
