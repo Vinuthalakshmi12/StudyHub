@@ -14,7 +14,7 @@ export default function AttendTestsPage() {
       </div>
       <div className="grid lg:grid-cols-4 gap-8 px-10 grid-cols-2">
         {Tests.map((feed) => (
-          <Link href={`/dashboard/attendTest/t/${feed.id}`}>
+          <Link key={feed.id} href={`/dashboard/attendTest/t/${feed.id}`}>
             <Test key={feed.id} {...{ feed }} />
           </Link>
         ))}

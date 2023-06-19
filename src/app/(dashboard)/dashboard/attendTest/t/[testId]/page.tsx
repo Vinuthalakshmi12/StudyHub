@@ -62,7 +62,7 @@ export default function TestViewPage() {
         </div>
         <div>
           {feed?.questions.map((question, index) => (
-            <div className="px-10 py-5">
+            <div key={question.id} className="px-10 py-5">
               <h2 className="text-lg font-medium block space-x-2">
                 <span>{index + 1}.</span> {question.question}
               </h2>
