@@ -1,4 +1,3 @@
-import { VariantProps, cva } from "class-variance-authority";
 
 interface inputProps{
     heading:string,

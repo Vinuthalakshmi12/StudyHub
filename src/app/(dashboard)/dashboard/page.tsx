@@ -1,6 +1,8 @@
+import React from 'react'
 
-const New = () => {
-  return <div className="mt-[70px] mb-2 mx-[70px] ">Dashboard</div>;
-};
+export default function Dashboard() {
+  return (
+    <div>Dashboard</div>
+  )
+}
 
-export default New;

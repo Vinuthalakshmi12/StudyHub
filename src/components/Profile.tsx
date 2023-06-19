@@ -1,4 +1,4 @@
-export default function Page() {
+export default function ProfilePage() {
     return (
       <div className="w-full max-w-xs rounded-xl bg-white px-12 py-8 border-2 border-gray-400 shadow-2xl text-center lg:px-18 lg:py-10">
         <img

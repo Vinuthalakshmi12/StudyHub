@@ -1,6 +1,6 @@
 "use client";
 
-export default function Page() {
+export default function DashboardStaffPage() {
   return (
     <>
       <div className="mt-[70px] mb-2 mx-[70px] ">

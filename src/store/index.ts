@@ -6,13 +6,6 @@ import auth from "./auth.slice";
 
 export const store = configureStore({
   reducer: {
-    // [TestsSlice.name]: TestsSlice.reducer,
-    // [FavSlice.name]: FavSlice.reducer,
-    // [QPSlice.name]: QPSlice.reducer,
-    // [DisplayNotesSlice.name]: DisplayNotesSlice.reducer,
-    // [ReviewSlice.name]: DisplayNotesSlice.reducer,
-    // [searchSlice.name]: searchSlice.reducer,
-    // [DisplaytestsresultsSlice.name]: DisplaytestsresultsSlice.reducer,
     [NotesSlice.name]: NotesSlice.reducer,
     [TestsSlice.name]: TestsSlice.reducer,
     [auth.name]: auth.reducer,

@@ -6,7 +6,7 @@ import { useParams, useRouter } from "next/navigation";
 import { useState } from "react";
 import { toast } from "react-hot-toast";
 import { AiOutlineArrowLeft } from "react-icons/ai";
-import { SupaClient } from "../../../../../../utils/supabase";
+import { SupaClient } from "@/utils/supabase";
 
 export default function TestViewPage() {
   const router = useRouter();
