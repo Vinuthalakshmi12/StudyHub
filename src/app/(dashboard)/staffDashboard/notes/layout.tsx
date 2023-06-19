@@ -1,5 +1,4 @@
 "use client";
-import { NotesSelector } from "@/store/displaynotes.slice";
 import { useAppDispatch } from "../../../../utils/hooks";
 import { useAppSelector } from "@/store/index";
 import { getNotes } from "@/store/notes.slice";

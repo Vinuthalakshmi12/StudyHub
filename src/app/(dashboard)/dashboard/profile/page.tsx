@@ -5,13 +5,13 @@ export default function ProfileImage() {
     <>
       <div className="  py-[30px] px-[30px] text-[30px] font-bold">
         My Profile
-        <div className="flex flex-row gap-10 ml-[150px] my-[50px] ">
+        <div className="flex flex-row gap-10 ml-[150px] my-[50px]">
           <Profile />
           <div className="flex flex-col gap-6 mt-[50px]">
             <div className="bg-white px-[10px] py-[10px] shadow-lg shadow-gray-800 w-[500px] h-[200px] rounded-3xl">
               <h1 className="text-[25px] font-bold"> College Details</h1>
               <div className="border-[2px] border-black rounded-full"></div>
-              <div className="flex flex-col gap-3 mt-[10px] pl-[30px] ">
+              <div className="flex flex-col gap-3 mt-[10px] pl-[30px]">
                 <div className="text-[15px] font-bold">
                   {" "}
                   Register Number : {("465CS2000")}
