@@ -1,5 +1,5 @@
 "use client";
-import { useAppDispatch } from "../../../../utils/hooks";
+import { useAppDispatch } from "@/utils/hooks";
 import { useAppSelector } from "@/store/index";
 import { TestsSelector, getTestsWithQuestions } from "@/store/tests.slice";
 

@@ -12,7 +12,6 @@ import { IoExitOutline } from "react-icons/io5";
 import { useEffect, useState } from "react";
 import { IoMdNotificationsOutline } from "react-icons/io";
 import { FaRegUser } from "react-icons/fa";
-import Searchbar from "@/components/searchbar2";
 import { useAppSelector } from "@/store/index";
 import { useRouter } from "next/navigation";
 import { signOut } from "next-auth/react";
@@ -40,7 +39,6 @@ export default function RootLayout({ children }: props) {
       <nav className=" shadow-md  border-gray-400 h-14 flex items-center justify-between pr-[10px] text-xl font-mono font-bold">
         <div className="bg-[url('/logo.jpg')] bg-contain bg-no-repeat w-full h-[65px] mb-[7px] "></div>
         <ul className="flex flex-row gap-10">
-          <Searchbar />
           <li>
             <IoMdNotificationsOutline size="2rem" color="#3EB489" />
           </li>
