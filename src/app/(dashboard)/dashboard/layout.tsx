@@ -61,7 +61,7 @@ export default function RootLayout({ children }: props) {
                   : "hover:bg-green-100 hover:text-green-500"
               }`}
             >
-              <HiHome className="text-3xl"></HiHome>
+              <HiHome className="text-2xl"></HiHome>
             </button>
           </Link>
           <Link href={"/dashboard/notes"}>
@@ -74,7 +74,7 @@ export default function RootLayout({ children }: props) {
                   : "hover:bg-green-100 hover:text-green-500"
               }`}
             >
-              <BsBookHalf className="text-3xl" />
+              <BsBookHalf className="text-2xl" />
             </button>
           </Link>
 
@@ -87,7 +87,7 @@ export default function RootLayout({ children }: props) {
                   : "hover:bg-green-100 hover:text-green-500"
               }`}
             >
-              <GiNotebook className="text-3xl" />
+              <GiNotebook className="text-2xl" />
             </button>
           </Link>
           <Link href={"/dashboard/testHistory"}>
@@ -100,7 +100,7 @@ export default function RootLayout({ children }: props) {
                   : "hover:bg-green-100 hover:text-green-500"
               }`}
             >
-              <MdHistory className="text-3xl" />
+              <MdHistory className="text-2xl" />
             </button>
           </Link>
           {/* <Link href={"/dashboard/favourites"}>
@@ -118,7 +118,7 @@ export default function RootLayout({ children }: props) {
             onClick={() => signOut()}
             className={`h-12 w-12 p-2 rounded-full flex items-center justify-center hover:bg-green-100 hover:text-green-500`}
           >
-            <IoExitOutline className="text-3xl" />
+            <IoExitOutline className="text-2xl" />
           </button>
         </div>
 
