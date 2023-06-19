@@ -11,6 +11,7 @@ import { FaRegUser } from "react-icons/fa";
 import { BiUpload } from "react-icons/bi";
 import Link from "next/link";
 import { signOut } from "next-auth/react";
+import { usePathname, useRouter } from "next/navigation";
 
 interface props {
   children: React.ReactNode;
@@ -18,6 +19,7 @@ interface props {
 
 export default function RootLayout({ children }: props) {
   const [selectButton, setSelectButton] = useState<number | null>(null);
+  const pathname = usePathname()
 
   const handleButtonClick = (buttonIndex: number) => {
     setSelectButton(buttonIndex);
@@ -31,9 +33,9 @@ export default function RootLayout({ children }: props) {
           <li>
             <IoMdNotificationsOutline size="2rem" color="#3EB489" />
           </li>
-          <li>
+          <Link href={"/staffDashboard/profile"}>
             <FaRegUser size="1.7rem" color="#3EB489" />
-          </li>
+          </Link>
         </ul>
       </nav>
       <div className="w-full h-full flex">
@@ -41,8 +43,10 @@ export default function RootLayout({ children }: props) {
           <Link href={"/staffDashboard/notes"}>
             <button
               onClick={() => handleButtonClick(1)}
-              className={`w-full pl-[20px]  border-r-4 ${
-                selectButton === 1 ? "border-green-500" : "border-white"
+              className={`h-12 w-12 p-2 rounded-full flex items-center justify-center  ${
+                pathname == "/staffDashboard"
+                  ? "bg-green-100 text-green-500"
+                  : "hover:bg-green-100 hover:text-green-500"
               }`}
             >
               <HiHome size="2rem" color="#3EB489"></HiHome>
@@ -51,41 +55,32 @@ export default function RootLayout({ children }: props) {
           <Link href={"/staffDashboard/notes"}>
             <button
               onClick={() => handleButtonClick(2)}
-              className={`w-full pl-[20px] border-r-4  ${
-                selectButton === 2 ? "border-green-500" : "border-white"
+              className={`h-12 w-12 p-2 rounded-full flex items-center justify-center  ${
+                pathname.startsWith("/staffDashboard/notes")
+                  ? "bg-green-100 text-green-500"
+                  : "hover:bg-green-100 hover:text-green-500"
               }`}
             >
-              <div className="flex flex-row items-baseline">
-                <BsBookHalf size="1.8rem" color="#3EB489" />
-                <BiUpload size="1.2rem" color="#3EB489" />
-              </div>
+              <BsBookHalf className={"text-2xl"} />
             </button>
           </Link>
 
           <button
-            onClick={() => handleButtonClick(3)}
-            className={`w-full pl-[20px] border-r-4 ${
-              selectButton === 3 ? "border-green-500" : "border-white"
-            }`}
-          >
-            <SlNote size="1.8rem" color="#3EB489" />
-          </button>
-          <button
             onClick={() => handleButtonClick(4)}
-            className={`w-full pl-[20px] border-r-4 ${
-              selectButton === 4 ? "border-green-500" : "border-white"
+            className={`h-12 w-12 p-2 rounded-full flex items-center justify-center  ${
+              pathname.startsWith("/staffDashboard/history")
+                ? "bg-green-100 text-green-500"
+                : "hover:bg-green-100 hover:text-green-500"
             }`}
           >
-            <MdHistory size="2rem" color="#3EB489" />
+            <MdHistory className={"text-2xl"} />
           </button>
 
           <button
             onClick={() => signOut()}
-            className={`w-full pl-[20px] border-r-4 ${
-              selectButton === 6 ? "border-green-500" : "border-white"
-            }`}
+            className={`h-12 w-12 p-2 rounded-full flex items-center justify-center hover:bg-green-100 hover:text-green-500"`}
           >
-            <IoExitOutline size="2rem" color="#3EB489" />
+            <IoExitOutline className={"text-2xl"} />
           </button>
         </div>
 

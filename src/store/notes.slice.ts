@@ -32,6 +32,7 @@ export const postNotes = createAsyncThunk<
     subCode: string;
     fileUrl: string;
     semester: string;
+    userId:string;
   },
   { rejectValue: any }
 >(
@@ -44,7 +45,7 @@ export const postNotes = createAsyncThunk<
         unit_name: payload.unitNo,
         branch_name: "CSE",
         sem_no: payload.semester,
-        usersId: "b03f5fb9-7892-42dd-af35-e67af6f4b51e",
+        usersId: payload.userId,
         sub_code: payload.subCode,
         file_url: payload.fileUrl,
         dislikes: 0,

@@ -8,12 +8,14 @@ import { AiOutlineArrowLeft } from "react-icons/ai";
 import { SupaClient } from "@/utils/supabase";
 import { useAppDispatch } from "@/utils/hooks";
 import { postNotes } from "@/store/notes.slice";
+import { useSession } from "next-auth/react";
 
 const Subjects = [
   { value: "20CS21P", name: "Operating systems" },
   { value: "20CS23P", name: "Sowtware engineering" },
   { value: "20CS24P", name: "Hardware" },
 ];
+
 export default function NewNotes() {
   const router = useRouter();
   const [state, setState] = useState({
@@ -25,6 +27,7 @@ export default function NewNotes() {
   });
   const [file, setFile] = useState<File | null>(null);
   const dispatch = useAppDispatch();
+  const session = useSession();
 
   const onSubmit = async () => {
     try {
@@ -33,7 +36,7 @@ export default function NewNotes() {
           .from("notes")
           .upload(`/f/${file.name}-${new Date().getTime()}.pdf`, file);
         const path = response.data?.path;
-        if (path) {
+        if (path && session.data) {
           dispatch(
             postNotes({
               title: state.title,
@@ -42,6 +45,7 @@ export default function NewNotes() {
               subCode: state.subjectName,
               semester: state.semester,
               unitName: state.unitName,
+              userId: session.data.user?.id!,
             })
           );
           toast.success("Uploaded notes successfully");

@@ -13,7 +13,7 @@ import { useEffect, useState } from "react";
 import { IoMdNotificationsOutline } from "react-icons/io";
 import { FaRegUser } from "react-icons/fa";
 import { useAppSelector } from "@/store/index";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { signOut } from "next-auth/react";
 
 interface props {
@@ -24,6 +24,7 @@ export default function RootLayout({ children }: props) {
   const [selectButton, setSelectButton] = useState<number | null>(null);
   const user = useAppSelector((state) => state.auth);
   const router = useRouter();
+  const pathname = usePathname();
 
   const handleButtonClick = (buttonIndex: number) => {
     setSelectButton(buttonIndex);
@@ -50,51 +51,59 @@ export default function RootLayout({ children }: props) {
         </ul>
       </nav>
       <div className="w-full h-full flex">
-        <div className="h-full w-[80px] flex flex-col items-center gap-7 mt-[20px]">
+        <div className="h-full w-[80px] flex flex-col items-center gap-7 mt-[20px] transition-all duration-200">
           <Link href={"/dashboard"}>
             <button
               onClick={() => handleButtonClick(1)}
-              className={`w-full pl-[20px] pr-[20px] border-r-4 ${
-                selectButton === 1 ? "border-green-500" : "border-white"
+              className={`h-12 w-12 p-2 rounded-full flex items-center justify-center  ${
+                pathname == "/dashboard"
+                  ? "bg-green-100 text-green-500"
+                  : "hover:bg-green-100 hover:text-green-500"
               }`}
             >
-              <HiHome size="2rem" color="#3EB489"></HiHome>
+              <HiHome className="text-3xl"></HiHome>
             </button>
           </Link>
           <Link href={"/dashboard/notes"}>
             {" "}
             <button
               onClick={() => handleButtonClick(2)}
-              className={`w-full pl-[20px] pr-[20px] border-r-4  ${
-                selectButton === 2 ? "border-green-500" : "border-white"
+              className={`h-12 w-12 p-2 rounded-full flex items-center justify-center  ${
+                pathname.startsWith("/dashboard/notes")
+                  ? "bg-green-100 text-green-500"
+                  : "hover:bg-green-100 hover:text-green-500"
               }`}
             >
-              <BsBookHalf size="2rem" color="#3EB489" />
+              <BsBookHalf className="text-3xl" />
             </button>
           </Link>
 
           <Link href={"/dashboard/attendTest"}>
             <button
               onClick={() => handleButtonClick(3)}
-              className={`w-full pl-[20px] pr-[20px] border-r-4 ${
-                selectButton === 3 ? "border-green-500" : "border-white"
+              className={`h-12 w-12 p-2 rounded-full flex items-center justify-center  ${
+                pathname.startsWith("/dashboard/attendTest")
+                  ? "bg-green-100 text-green-500"
+                  : "hover:bg-green-100 hover:text-green-500"
               }`}
             >
-              <GiNotebook size="2rem" color="#3EB489" />
+              <GiNotebook className="text-3xl" />
             </button>
           </Link>
           <Link href={"/dashboard/testHistory"}>
             {" "}
             <button
               onClick={() => handleButtonClick(4)}
-              className={`w-full pl-[20px] pr-[20px] border-r-4 ${
-                selectButton === 4 ? "border-green-500" : "border-white"
+              className={`h-12 w-12 p-2 rounded-full flex items-center justify-center  ${
+                pathname.startsWith("/dashboard/testHistory")
+                  ? "bg-green-100 text-green-500"
+                  : "hover:bg-green-100 hover:text-green-500"
               }`}
             >
-              <MdHistory size="2rem" color="#3EB489" />
+              <MdHistory className="text-3xl" />
             </button>
           </Link>
-          <Link href={"/dashboard/favourites"}>
+          {/* <Link href={"/dashboard/favourites"}>
             {" "}
             <button
               onClick={() => handleButtonClick(5)}
@@ -104,21 +113,16 @@ export default function RootLayout({ children }: props) {
             >
               <AiFillHeart size="2rem" color="#3EB489" />
             </button>
-          </Link>
-          <Link href={"/studyHub"}>
-            {" "}
-            <button
-              onClick={() => signOut()}
-              className={`w-full pl-[20px] pr-[20px] border-r-4 ${
-                selectButton === 6 ? "border-green-500" : "border-white"
-              }`}
-            >
-              <IoExitOutline size="2rem" color="#3EB489" />
-            </button>
-          </Link>
+          </Link> */}
+          <button
+            onClick={() => signOut()}
+            className={`h-12 w-12 p-2 rounded-full flex items-center justify-center hover:bg-green-100 hover:text-green-500`}
+          >
+            <IoExitOutline className="text-3xl" />
+          </button>
         </div>
 
-        <main className="w-full h-full bg-gray-200  overflow-y-scroll">
+        <main className="w-full h-full bg-gray-100  overflow-y-scroll">
           {children}
         </main>
       </div>

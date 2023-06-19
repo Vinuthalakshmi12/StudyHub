@@ -7,6 +7,7 @@ import { useState } from "react";
 import { toast } from "react-hot-toast";
 import { AiOutlineArrowLeft } from "react-icons/ai";
 import { SupaClient } from "@/utils/supabase";
+import { useSession } from "next-auth/react";
 
 export default function TestViewPage() {
   const router = useRouter();
@@ -15,6 +16,7 @@ export default function TestViewPage() {
   const feed = useAppSelector((state) => TestsSelector.selectById(state, id));
   const [state, setState] = useState<{ [key: string]: string }>({});
   const [isSubmitting, setSubmit] = useState(false);
+  const session = useSession();
 
   const onSubmit = async () => {
     setSubmit(true);
@@ -31,7 +33,7 @@ export default function TestViewPage() {
             await SupaClient.from("answers").insert({
               answer: state[question.id],
               questionsId: question.id,
-              userId: "f83dec1e-ec63-4336-ab16-adabc21935f0",
+              userId: session.data?.user?.id,
               marks: state[question.id] == response.data?.answer ? 1 : 0,
             });
           })
@@ -40,9 +42,9 @@ export default function TestViewPage() {
         await SupaClient.from("marks").insert({
           marks: totalMarks,
           testsId: feed.id,
-          userId: "f83dec1e-ec63-4336-ab16-adabc21935f0",
+          userId: session.data?.user?.id,
         });
-        // router.replace(`/dashboard/attendTest/t/${feed.id}/r/${feed.id}`);
+        router.replace(`/dashboard/attendTest/t/${feed.id}/r/${feed.id}`);
       }
     } catch (e) {
       toast.error("Something went wrong!");

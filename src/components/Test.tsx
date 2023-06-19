@@ -9,7 +9,7 @@ export default function Test({ feed }: { feed: Tests }) {
   return (
     <div className="bg-white w-full h-full rounded-md overflow-hidden border border-slate-300 cursor-pointer transition-all duration-200 hover:shadow-md">
       <div className="relative w-full h-52">
-        <Image src={"/default-book-icon.png"} fill alt="default-book-icon" />
+        <Image src={"/quizBg.jpg"} fill alt="default-book-icon" />
       </div>
       <div className="p-3">
         <div className="flex gap-2 items-center">

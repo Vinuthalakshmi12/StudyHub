@@ -27,6 +27,27 @@ export const getTestsWithQuestions = createAsyncThunk<
   }
 );
 
+export const getTestsWithQuestionsAnswers = createAsyncThunk<
+  any,
+  { userId: string; testId: string },
+  { rejectValue: any }
+>(
+  "/tests/getTestsWithQuestionsAnswers",
+  async (payload, { fulfillWithValue, rejectWithValue }) => {
+    try {
+      const response = await SupaClient.from("questions")
+        .select("*,answers(answer)")
+        .eq("testsId", payload.testId)
+        .eq("answers.userId", payload.userId);
+      const data = response.data;
+      if (response.error) return rejectWithValue(response.error);
+      return fulfillWithValue(data);
+    } catch (e) {
+      return rejectWithValue(e);
+    }
+  }
+);
+
 // export const postNotes = createAsyncThunk<
 //   any,
 //   {
@@ -70,27 +91,52 @@ export type Tests = Database["public"]["Tables"]["tests"]["Row"] & {
   questions: Database["public"]["Tables"]["questions"]["Row"][];
 };
 
+export type TestsAnswers = Database["public"]["Tables"]["questions"]["Row"] & {
+  answers: Pick<Database["public"]["Tables"]["answers"]["Row"], "answer">[];
+};
+
 const TestsAdapter = createEntityAdapter<Tests>({
+  selectId: (test) => test.id,
+});
+
+const TestsAnswersAdapter = createEntityAdapter<TestsAnswers>({
   selectId: (test) => test.id,
 });
 
 export const TestsSlice = createSlice({
   name: "tests",
-  initialState: TestsAdapter.getInitialState({
-    isPending: false,
-  }),
+  initialState: {
+    tests: TestsAdapter.getInitialState({
+      isPending: false,
+    }),
+    answers: TestsAnswersAdapter.getInitialState({
+      isPending: false,
+    }),
+  },
   reducers: {},
   extraReducers(builder) {
     builder
       .addCase(getTestsWithQuestions.pending, (state, action) => {
-        state.isPending = true;
+        state.tests.isPending = true;
       })
       .addCase(getTestsWithQuestions.fulfilled, (state, action) => {
-        TestsAdapter.setMany(state, action.payload);
+        state.tests.isPending = false;
+        TestsAdapter.setMany(state.tests, action.payload);
+      })
+      .addCase(getTestsWithQuestionsAnswers.pending, (state, action) => {
+        state.answers.isPending = true;
+      })
+      .addCase(getTestsWithQuestionsAnswers.fulfilled, (state, action) => {
+        state.answers.isPending = false;
+        TestsAnswersAdapter.setMany(state.answers, action.payload);
       });
   },
 });
 
 export const TestsSelector = TestsAdapter.getSelectors<RootState>(
-  (state) => state.tests
+  (state) => state.tests.tests
+);
+
+export const TestsAnswersSelector = TestsAnswersAdapter.getSelectors<RootState>(
+  (state) => state.tests.answers
 );
