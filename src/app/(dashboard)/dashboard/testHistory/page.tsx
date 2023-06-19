@@ -10,14 +10,16 @@ export default function AttendTestsPage() {
   return (
     <div>
       <div className="text-3xl px-16">
-        <h1 className="py-4">Available tests</h1>
+        <h1 className="py-4">Check Test Result</h1>
       </div>
       <div className="grid lg:grid-cols-4 gap-8 px-10 grid-cols-2">
-        {Tests.map((feed) => (
-          <Link key={feed.id} href={`/dashboard/testHistory/t/${feed.id}`}>
-            <Test key={feed.id} {...{ feed }} />
-          </Link>
-        ))}
+        {Tests.map((feed) => {
+          return (
+            <Link key={feed.id} href={`/dashboard/testHistory/t/${feed.id}`}>
+              <Test isViewTest key={feed.id} {...{ feed }} />
+            </Link>
+          );
+        })}
       </div>
     </div>
   );

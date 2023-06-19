@@ -5,7 +5,13 @@ import Image from "next/image";
 import React from "react";
 import { AiOutlineUser } from "react-icons/ai";
 
-export default function Test({ feed }: { feed: Tests }) {
+export default function Test({
+  feed,
+  isViewTest,
+}: {
+  feed: Tests;
+  isViewTest?: boolean;
+}) {
   return (
     <div className="bg-white w-full h-full rounded-md overflow-hidden border border-slate-300 cursor-pointer transition-all duration-200 hover:shadow-md">
       <div className="relative w-full h-52">
@@ -39,7 +45,9 @@ export default function Test({ feed }: { feed: Tests }) {
           </div>
         </div>
         <div className="flex items-center w-full py-3 px-2">
-          <Button color="success" variant="outlined" fullWidth>Attend</Button>
+          <Button color="success" variant="outlined" fullWidth>
+            {isViewTest ? "View" : "Attend"}
+          </Button>
         </div>
       </div>
     </div>

@@ -19,7 +19,7 @@ export default function ProfileImage() {
           <span className="text-xl">My Profile</span>
         </div>
         <div className={"flex flex-col items-center py-5 gap-2"}>
-          <Avatar variant="circular" sizes="lg" className={"h-32 w-32 text-3xl"} />
+          <Avatar variant="circular" style={{height:"128px",width:"128px"}} sizes="lg" className={"h-32 w-32 text-3xl"} />
           <span className="bg-green-300 text-green-600 px-2 py-1 rounded-full">
             {session.data?.user?.role}
           </span>

@@ -19,7 +19,7 @@ interface props {
 
 export default function RootLayout({ children }: props) {
   const [selectButton, setSelectButton] = useState<number | null>(null);
-  const pathname = usePathname()
+  const pathname = usePathname();
 
   const handleButtonClick = (buttonIndex: number) => {
     setSelectButton(buttonIndex);
@@ -40,7 +40,7 @@ export default function RootLayout({ children }: props) {
       </nav>
       <div className="w-full h-full flex">
         <div className="h-full w-[80px] flex flex-col items-center gap-7 mt-[20px]">
-          <Link href={"/staffDashboard/notes"}>
+          <Link href={"/staffDashboard"}>
             <button
               onClick={() => handleButtonClick(1)}
               className={`h-12 w-12 p-2 rounded-full flex items-center justify-center  ${
@@ -49,7 +49,7 @@ export default function RootLayout({ children }: props) {
                   : "hover:bg-green-100 hover:text-green-500"
               }`}
             >
-              <HiHome size="2rem" color="#3EB489"></HiHome>
+              <HiHome className="text-2xl"></HiHome>
             </button>
           </Link>
           <Link href={"/staffDashboard/notes"}>
