@@ -1,6 +1,6 @@
 import Profile from "@/components/Profile";
 
-export default function Page() {
+export default function ProfileImage() {
   return (
     <>
       <div className="  py-[30px] px-[30px] text-[30px] font-bold">
