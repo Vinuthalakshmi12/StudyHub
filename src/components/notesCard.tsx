@@ -68,7 +68,7 @@ export default function NotesCard({ feed }: { feed: Notes }) {
   );
 }
 
-const LikeButton = () => {
+export const LikeButton = () => {
   const [isLiked, setIsLiked] = useState(false);
 
   return (
@@ -88,7 +88,7 @@ const LikeButton = () => {
   );
 };
 
-const DisLikeButton = () => {
+export const DisLikeButton = () => {
   const [isLiked, setIsLiked] = useState(false);
 
   return (
