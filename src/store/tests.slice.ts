@@ -121,14 +121,14 @@ export const TestsSlice = createSlice({
       })
       .addCase(getTestsWithQuestions.fulfilled, (state, action) => {
         state.tests.isPending = false;
-        TestsAdapter.setMany(state.tests, action.payload);
+        TestsAdapter.setAll(state.tests, action.payload);
       })
       .addCase(getTestsWithQuestionsAnswers.pending, (state, action) => {
         state.answers.isPending = true;
       })
       .addCase(getTestsWithQuestionsAnswers.fulfilled, (state, action) => {
         state.answers.isPending = false;
-        TestsAnswersAdapter.setMany(state.answers, action.payload);
+        TestsAnswersAdapter.setAll(state.answers, action.payload);
       });
   },
 });

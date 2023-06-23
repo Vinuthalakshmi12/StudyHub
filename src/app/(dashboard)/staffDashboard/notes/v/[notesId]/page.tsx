@@ -1,4 +1,5 @@
 "use client";
+import { DisLikeButton, LikeButton } from "@/components/notesCard";
 import { RootState, useAppSelector } from "@/store/index";
 import { NotesSelector } from "@/store/notes.slice";
 import { SupaClient } from "@/utils/supabase";
@@ -86,27 +87,8 @@ export default function ViewNotesPage() {
             </div>
             <div className="flex justify-end gap-5 py-3 px-2">
               <div className="flex gap-1 items-center">
-                <button className="flex justify-center items-center h-8 w-8 transition-all duration-300 hover:bg-slate-200 rounded-full">
-                  <AiOutlineLike className="text-xl text-slate-800" />
-                </button>
-                <span className="font-medium text-slate-500">0</span>
-              </div>
-              <div className="flex gap-1 items-center">
-                <button className="flex justify-center items-center h-8 w-8 transition-all duration-300 hover:bg-slate-200 rounded-full">
-                  <AiOutlineDislike className="text-xl text-slate-800" />
-                </button>
-                <span className="font-medium text-slate-500">0</span>
-              </div>
-              <div className="flex gap-1 items-center">
-                <button className="flex justify-center items-center h-8 w-8 transition-all duration-300 hover:bg-slate-200 rounded-full">
-                  <AiOutlineComment className="text-xl text-slate-800" />
-                </button>
-                <span className="font-medium text-slate-500">0</span>
-              </div>
-              <div className="flex gap-1 items-center">
-                <button className="flex justify-center items-center h-8 w-8 transition-all duration-300 hover:bg-slate-200 rounded-full">
-                  <AiOutlineHeart className="text-xl text-slate-800" />
-                </button>
+                <LikeButton />
+                <DisLikeButton />
               </div>
             </div>
           </div>

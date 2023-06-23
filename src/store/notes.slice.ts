@@ -86,7 +86,7 @@ export const NotesSlice = createSlice({
         state.isPending = true;
       })
       .addCase(getNotes.fulfilled, (state, action) => {
-        NotesAdapter.setMany(state, action.payload);
+        NotesAdapter.setAll(state, action.payload);
       });
   },
 });

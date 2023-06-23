@@ -13,11 +13,20 @@ import moment from "moment";
 import { faker } from "@faker-js/faker";
 import Link from "next/link";
 
-export default function NotesCard({ feed }: { feed: Notes }) {
+export default function NotesCard({
+  feed,
+  isStaff,
+}: {
+  feed: Notes;
+  isStaff?: boolean;
+}) {
   if (!feed) return null;
   return (
     <div className="bg-white w-full h-full rounded-md overflow-hidden border border-slate-300 cursor-pointer transition-all duration-200 hover:scale-105 hover:shadow-md">
-      <Link key={feed.id} href={`/dashboard/notes/v/${feed.id}`}>
+      <Link
+        key={feed.id}
+        href={`/${isStaff ? "staffDashboard" : "dashboard"}/notes/v/${feed.id}`}
+      >
         <div className="relative w-full h-52">
           <Image
             src={faker.helpers.arrayElement([
@@ -61,7 +70,7 @@ export default function NotesCard({ feed }: { feed: Notes }) {
         </div>
         <div className="flex justify-between py-3 px-2">
           <LikeButton />
-          <DisLikeButton/>
+          <DisLikeButton />
         </div>
       </div>
     </div>
