@@ -115,6 +115,7 @@ export default function Page() {
       <div className="ml-[150px] my-[30px]">
         {" "}
         <Button
+           onClick={()=>alert("your response is sent")}
           LeftIcon={<AiOutlineUser className="text-xl" />}
           intent={"primary"}
         >
