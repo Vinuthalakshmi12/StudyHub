@@ -1,4 +1,5 @@
 "use client";
+import { TextField } from "@mui/material";
 import Avatar from "@mui/material/Avatar";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
@@ -27,6 +28,18 @@ export default function ProfileImage() {
           <span className={"text-lg text-slate-600"}>
             {session.data?.user?.email}
           </span>
+          <div className={"flex gap-2 items-center w-1/2 justify-between px-7"}>
+            <label className="text-md flex-1">Branch</label>
+            <TextField size="small" value={"Computer Sceince"} />
+          </div>
+          <div className={"flex gap-2 items-center w-1/2 justify-between px-7"}>
+            <label className="text-md flex-1">Sem</label>
+            <TextField size="small" value={"6"} />
+          </div>
+          <div className={"flex gap-2 items-center w-1/2 justify-between px-7"}>
+            <label className="text-md flex-1">Phone No.</label>
+            <TextField size="small" value={"+91 2738920 029383"} />
+          </div>
         </div>
       </div>
     </div>

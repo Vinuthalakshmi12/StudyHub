@@ -11,9 +11,9 @@ export default function DashboardStaffPage() {
     <>
       <div className="p-10">
         <div className="py-5 flex justify-start">
-          <h1 className="text-xl font-semibold text-slate-700">
-            Your Recent Uploads
-          </h1>
+        <h1 className="text-4xl py-3 font-extrabold bg-gradient-to-t from-green-600 to-blue-800/30 text-transparent bg-clip-text">
+          Your Recently Uploads
+        </h1>
         </div>
         <div className="grid lg:grid-cols-4 gap-8 grid-cols-2">
           {Notes.map((feed) => (

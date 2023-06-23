@@ -33,7 +33,7 @@ export default function Page() {
 
           <div className="flex flex-row items-center">
             <button className="h-14 px-[10px] pr-[50px] border-2 border-emerald-400">
-              New to StudyHub?
+              Welcome To StudyHub
             </button>
             <Link href={"/signin"}>
               {" "}

@@ -14,7 +14,7 @@ export default function Dashboard() {
   return (
     <div className="p-10">
       <div className="py-5 flex justify-start">
-        <h1 className="text-xl font-semibold text-slate-700">
+        <h1 className="text-4xl font-extrabold bg-gradient-to-t from-green-600 to-blue-800/30 text-transparent bg-clip-text">
           Recently Uploaded Tests
         </h1>
       </div>
@@ -26,7 +26,7 @@ export default function Dashboard() {
         ))}
       </div>
       <div className="py-5 flex justify-start">
-        <h1 className="text-xl font-semibold text-slate-700">
+        <h1 className="text-4xl font-extrabold bg-gradient-to-t from-green-600 to-blue-800/30 text-transparent bg-clip-text">
           Recently Uploaded Notes
         </h1>
       </div>

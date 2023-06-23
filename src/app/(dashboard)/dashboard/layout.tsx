@@ -47,8 +47,8 @@ export default function RootLayout({ children }: props) {
 
   return (
     <div className="h-screen w-screen overflow-hidden">
-      <nav className=" shadow-md  border-gray-400 h-14 flex items-center justify-between pr-[10px] text-xl font-mono font-bold">
-        <div className="bg-[url('/logo.jpg')] bg-contain bg-no-repeat w-full h-[65px] mb-[7px] "></div>
+      <nav className="border-b border-gray-300 h-14 flex items-center justify-between pr-[10px] text-xl font-mono font-bold">
+        <Image src="/logo.jpg" alt={"study hub"} width={160} height={100} />
         <ul className="flex flex-row gap-10">
           <Link href={"/dashboard/profile"}>
             <li>
@@ -58,7 +58,7 @@ export default function RootLayout({ children }: props) {
         </ul>
       </nav>
       <div className="w-full h-full flex">
-        <div className="h-full w-[80px] flex flex-col items-center gap-7 mt-[20px] transition-all duration-200">
+        <div className="h-full w-[80px] border-r border-slate-300 flex flex-col items-center gap-7 pt-[20px] transition-all duration-200">
           <Link href={"/dashboard"}>
             <button
               onClick={() => handleButtonClick(1)}
@@ -121,15 +121,16 @@ export default function RootLayout({ children }: props) {
               <AiFillHeart size="2rem" color="#3EB489" />
             </button>
           </Link> */}
-          <button
-            onClick={() => signOut()}
-            className={`h-12 w-12 p-2 rounded-full flex items-center justify-center hover:bg-green-100 hover:text-green-500`}
-          >
-            <IoExitOutline className="text-2xl" />
-          </button>
+          <Link href={"/api/auth/signout"}>
+            <button
+              className={`h-12 w-12 p-2 rounded-full flex items-center justify-center hover:bg-green-100 hover:text-green-500`}
+            >
+              <IoExitOutline className="text-2xl" />
+            </button>
+          </Link>
         </div>
 
-        <main className="w-full h-full bg-gray-100  overflow-y-scroll">
+        <main className="w-full h-full bg-gradient-to-t from-green-200 to-green-50  overflow-y-scroll">
           {children}
         </main>
       </div>
