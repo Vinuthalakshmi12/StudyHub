@@ -11,9 +11,9 @@ export const getNotes = createAsyncThunk<any, void, { rejectValue: any }>(
   "/notes/getNotes",
   async (_payload, { fulfillWithValue, rejectWithValue }) => {
     try {
-      const response = await SupaClient.from("notes").select(
-        "*,User(id,first_name,prof_image),subjects(sub_code,sub_name)"
-      );
+      const response = await SupaClient.from("notes")
+        .select("*,User(id,first_name,prof_image),subjects(sub_code,sub_name)")
+        .order("uploaded_date", { ascending: false });
       const data = response.data;
       if (response.error) return rejectWithValue(response.error);
       return fulfillWithValue(data);
@@ -32,7 +32,7 @@ export const postNotes = createAsyncThunk<
     subCode: string;
     fileUrl: string;
     semester: string;
-    userId:string;
+    userId: string;
   },
   { rejectValue: any }
 >(
