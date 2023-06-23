@@ -1,24 +1,24 @@
 "use client";
 
+import NotesCard from "@/components/notesCard";
+import { useAppSelector } from "@/store";
+import { NotesSelector } from "@/store/notes.slice";
+import Link from "next/link";
+
 export default function DashboardStaffPage() {
+  const Notes = useAppSelector(NotesSelector.selectAll);
   return (
     <>
-      <div className="mt-[70px] mb-2 mx-[70px] ">
-        <h1 className="font-bold mb-2 text-[22px]"> Your Recent uploads</h1>
-
-        <div className="mt-[50px] ">
-          <h1 className="font-bold mb-2 text-[22px]"> Available tests</h1>
-          <div className="flex gap-40 items-start">
-            <div className="flex flex-col  items-center">
-              <div className="h-[310px] w-[1px] bg-gray-500"></div>
-            </div>
-            <div className="flex flex-col">
-              <div className="text-black font-bold text-[22px] mb-2">
-                Interactions
-              </div>
-              <div className=" bg-[url('/interaction.png')] bg-contain bg-no-repeat w-[280px] h-[280px]"></div>
-            </div>
-          </div>
+      <div className="p-10">
+        <div className="py-5 flex justify-start">
+          <h1 className="text-xl font-semibold text-slate-700">
+            Your Recent Uploads
+          </h1>
+        </div>
+        <div className="grid lg:grid-cols-4 gap-8 grid-cols-2">
+          {Notes.map((feed) => (
+            <NotesCard key={feed.id} {...{ feed }} />
+          ))}
         </div>
       </div>
     </>

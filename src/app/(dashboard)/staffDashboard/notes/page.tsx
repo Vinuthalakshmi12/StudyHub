@@ -18,9 +18,7 @@ export default function NotesPage() {
       </div>
       <div className="grid lg:grid-cols-4 gap-8 px-10 grid-cols-2">
         {Notes.map((feed) => (
-          <Link key={feed.id} href={`/dashboard/notes/v/${feed.id}`}>
-            <NotesCard key={feed.id} {...{ feed }} />
-          </Link>
+          <NotesCard key={feed.id} {...{ feed }} />
         ))}
       </div>
     </div>

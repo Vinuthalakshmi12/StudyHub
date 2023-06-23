@@ -12,6 +12,9 @@ import { BiUpload } from "react-icons/bi";
 import Link from "next/link";
 import { signOut } from "next-auth/react";
 import { usePathname, useRouter } from "next/navigation";
+import { useAppDispatch } from "@/utils/hooks";
+import { getNotes } from "@/store/notes.slice";
+import { useAppSelector } from "@/store";
 
 interface props {
   children: React.ReactNode;
@@ -25,14 +28,16 @@ export default function RootLayout({ children }: props) {
     setSelectButton(buttonIndex);
   };
 
+  const dispatch = useAppDispatch();
+  const notesIds = useAppSelector((state) => state.notes.ids);
+
+  if (notesIds.length == 0) dispatch(getNotes());
+
   return (
     <div className="h-screen w-screen overflow-hidden">
       <nav className=" shadow-md  border-gray-400 h-14 flex items-center justify-between pr-[10px] text-xl font-mono font-bold">
         <div className="bg-[url('/logo.jpg')] bg-contain bg-no-repeat w-full h-[65px] mb-[7px] "></div>
         <ul className="flex flex-row gap-10">
-          <li>
-            <IoMdNotificationsOutline size="2rem" color="#3EB489" />
-          </li>
           <Link href={"/staffDashboard/profile"}>
             <FaRegUser size="1.7rem" color="#3EB489" />
           </Link>
@@ -64,17 +69,6 @@ export default function RootLayout({ children }: props) {
               <BsBookHalf className={"text-2xl"} />
             </button>
           </Link>
-
-          <button
-            onClick={() => handleButtonClick(4)}
-            className={`h-12 w-12 p-2 rounded-full flex items-center justify-center  ${
-              pathname.startsWith("/staffDashboard/history")
-                ? "bg-green-100 text-green-500"
-                : "hover:bg-green-100 hover:text-green-500"
-            }`}
-          >
-            <MdHistory className={"text-2xl"} />
-          </button>
 
           <button
             onClick={() => signOut()}

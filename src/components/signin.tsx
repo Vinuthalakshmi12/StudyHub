@@ -90,7 +90,7 @@ export default function Signin() {
                 Sign in
               </Button>
 
-              <div className="text-sm flex items-center justify-center px-2 py-2 pt-3 pb-3">
+              {/* <div className="text-sm flex items-center justify-center px-2 py-2 pt-3 pb-3">
                 <Link href={"/forgotpw1"}>
                   {" "}
                   <a
@@ -100,7 +100,7 @@ export default function Signin() {
                     Forgot password?
                   </a>
                 </Link>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>

@@ -8,10 +8,5 @@ interface props {
 }
 
 export default function RootLayout({ children }: props) {
-  const dispatch = useAppDispatch();
-  const notesIds = useAppSelector((state) => state.notes.ids);
-
-  if (notesIds.length == 0) dispatch(getNotes());
-
   return <div>{children}</div>;
 }

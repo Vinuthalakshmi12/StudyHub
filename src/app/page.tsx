@@ -10,7 +10,7 @@ import { FiTwitter } from "react-icons/fi"
 
 export default function Page() {
   return (
-    <div className="h-screen w-screen ">
+    <div className="h-screen w-screen overflow-y-scroll">
       <nav className=" h-[80px] w-full flex flex-row justify-between shadow-lg shadow-gray-400 items-center ">
 
         <div className="bg-[url('/logo.jpg')] bg-contain bg-no-repeat w-full h-[65px] mb-[7px] "></div>

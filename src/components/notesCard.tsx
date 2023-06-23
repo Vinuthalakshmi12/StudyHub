@@ -1,21 +1,37 @@
+"use client";
 import { Notes } from "@/store/notes.slice";
 import Image from "next/image";
-import React from "react";
+import React, { useState } from "react";
 import {
-  AiOutlineComment,
+  AiFillDislike,
+  AiFillLike,
   AiOutlineDislike,
   AiOutlineLike,
   AiOutlineUser,
 } from "react-icons/ai";
 import moment from "moment";
+import { faker } from "@faker-js/faker";
+import Link from "next/link";
 
 export default function NotesCard({ feed }: { feed: Notes }) {
   if (!feed) return null;
   return (
     <div className="bg-white w-full h-full rounded-md overflow-hidden border border-slate-300 cursor-pointer transition-all duration-200 hover:scale-105 hover:shadow-md">
-      <div className="relative w-full h-52">
-        <Image src={"/default-book-icon.png"} fill alt="default-book-icon" />
-      </div>
+      <Link key={feed.id} href={`/dashboard/notes/v/${feed.id}`}>
+        <div className="relative w-full h-52">
+          <Image
+            src={faker.helpers.arrayElement([
+              "https://d28hgpri8am2if.cloudfront.net/book_images/onix/cvr9781440583810/math-geek-9781440583810_hr.jpg",
+              "https://m.media-amazon.com/images/I/91JLJ+dZOUL._AC_UF1000,1000_QL80_.jpg",
+              "https://i.pinimg.com/originals/17/23/89/1723894e4cd15ef0f972838e307b7830.jpg",
+              "https://m.media-amazon.com/images/I/911IjI1tl2L._AC_UF1000,1000_QL80_.jpg",
+            ])}
+            fill
+            alt="default-book-icon"
+          />
+        </div>
+      </Link>
+
       <div className="p-3">
         <div className="flex gap-2 items-center">
           {feed.User.prof_image ? (
@@ -44,26 +60,49 @@ export default function NotesCard({ feed }: { feed: Notes }) {
           </div>
         </div>
         <div className="flex justify-between py-3 px-2">
-          <div className="flex gap-1 items-center">
-            <button className="flex justify-center items-center h-8 w-8 transition-all duration-300 hover:bg-slate-200 rounded-full">
-              <AiOutlineLike className="text-xl text-slate-800" />
-            </button>
-            <span className="font-medium text-slate-500">0</span>
-          </div>
-          <div className="flex gap-1 items-center">
-            <button className="flex justify-center items-center h-8 w-8 transition-all duration-300 hover:bg-slate-200 rounded-full">
-              <AiOutlineDislike className="text-xl text-slate-800" />
-            </button>
-            <span className="font-medium text-slate-500">0</span>
-          </div>
-          <div className="flex gap-1 items-center">
-            <button className="flex justify-center items-center h-8 w-8 transition-all duration-300 hover:bg-slate-200 rounded-full">
-              <AiOutlineComment className="text-xl text-slate-800" />
-            </button>
-            <span className="font-medium text-slate-500">0</span>
-          </div>
+          <LikeButton />
+          <DisLikeButton/>
         </div>
       </div>
     </div>
   );
 }
+
+const LikeButton = () => {
+  const [isLiked, setIsLiked] = useState(false);
+
+  return (
+    <div className="flex gap-1 items-center">
+      <button
+        onClick={() => setIsLiked(!isLiked)}
+        className="flex justify-center items-center h-8 w-8 transition-all duration-300 hover:bg-slate-200 rounded-full"
+      >
+        {isLiked ? (
+          <AiFillLike className="text-xl text-slate-800" />
+        ) : (
+          <AiOutlineLike className="text-xl text-slate-800" />
+        )}
+      </button>
+      <span className="font-medium text-slate-500">{isLiked ? 1 : null}</span>
+    </div>
+  );
+};
+
+const DisLikeButton = () => {
+  const [isLiked, setIsLiked] = useState(false);
+
+  return (
+    <div className="flex gap-1 items-center">
+      <button
+        onClick={() => setIsLiked(!isLiked)}
+        className="flex justify-center items-center h-8 w-8 transition-all duration-300 hover:bg-slate-200 rounded-full"
+      >
+        {isLiked ? (
+          <AiFillDislike className="text-xl text-slate-800" />
+        ) : (
+          <AiOutlineDislike className="text-xl text-slate-800" />
+        )}
+      </button>
+    </div>
+  );
+};

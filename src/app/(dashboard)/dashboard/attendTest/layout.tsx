@@ -9,9 +9,6 @@ interface props {
 
 export default function RootLayout({ children }: props) {
   const dispatch = useAppDispatch();
-  const testIds = useAppSelector(TestsSelector.selectIds);
-
-  if (testIds.length == 0) dispatch(getTestsWithQuestions());
 
   return <div>{children}</div>;
 }

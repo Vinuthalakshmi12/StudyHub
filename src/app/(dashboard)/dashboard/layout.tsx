@@ -15,6 +15,9 @@ import { FaRegUser } from "react-icons/fa";
 import { useAppSelector } from "@/store/index";
 import { usePathname, useRouter } from "next/navigation";
 import { signOut } from "next-auth/react";
+import { useAppDispatch } from "@/utils/hooks";
+import { getNotes } from "@/store/notes.slice";
+import { TestsSelector, getTestsWithQuestions } from "@/store/tests.slice";
 
 interface props {
   children: React.ReactNode;
@@ -29,6 +32,13 @@ export default function RootLayout({ children }: props) {
   const handleButtonClick = (buttonIndex: number) => {
     setSelectButton(buttonIndex);
   };
+  const dispatch = useAppDispatch();
+  const notesIds = useAppSelector((state) => state.notes.ids);
+  const testIds = useAppSelector(TestsSelector.selectIds);
+
+  if (notesIds.length == 0) dispatch(getNotes());
+
+  if (testIds.length == 0) dispatch(getTestsWithQuestions());
 
   useEffect(() => {
     if (user.role == "STAFF") router.replace("/staffDashboard");
@@ -40,9 +50,6 @@ export default function RootLayout({ children }: props) {
       <nav className=" shadow-md  border-gray-400 h-14 flex items-center justify-between pr-[10px] text-xl font-mono font-bold">
         <div className="bg-[url('/logo.jpg')] bg-contain bg-no-repeat w-full h-[65px] mb-[7px] "></div>
         <ul className="flex flex-row gap-10">
-          <li>
-            <IoMdNotificationsOutline size="2rem" color="#3EB489" />
-          </li>
           <Link href={"/dashboard/profile"}>
             <li>
               <FaRegUser size="1.7rem" color="#3EB489" />

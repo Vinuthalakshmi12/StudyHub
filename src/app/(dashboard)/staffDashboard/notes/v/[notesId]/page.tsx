@@ -1,6 +1,7 @@
 "use client";
 import { RootState, useAppSelector } from "@/store/index";
 import { NotesSelector } from "@/store/notes.slice";
+import { SupaClient } from "@/utils/supabase";
 import moment from "moment";
 import Image from "next/image";
 import { useParams, useRouter } from "next/navigation";
@@ -31,10 +32,15 @@ export default function ViewNotesPage() {
         </div>
         <div>
           <div className="relative w-full h-[700px_!important]">
-            <Image
-              src={"/default-book-icon.png"}
-              fill
-              alt="default-book-icon"
+            <iframe
+              src={
+                feed?.file_url?.startsWith("p/")
+                  ? SupaClient.storage.from("notes").getPublicUrl(feed.file_url)
+                      .data.publicUrl
+                  : feed?.file_url ?? ""
+              }
+              allowFullScreen
+              className="h-full w-full"
             />
           </div>
           <div className="p-3">
@@ -65,10 +71,18 @@ export default function ViewNotesPage() {
               </div>
             </div>
             <div className="py-2 px-5 flex items-center gap-3">
-              <span className="bg-green-200 text-green-500 rounded-full px-2 py-1">Branch - {feed?.branch_name}</span>
-              <span className="bg-green-200 text-green-500 rounded-full px-2 py-1">Sem - {feed?.sem_no}</span>
-              <span className="bg-green-200 text-green-500 rounded-full px-2 py-1">Subject Code - {feed?.subjects.sub_code}</span>
-              <span className="bg-green-200 text-green-500 rounded-full px-2 py-1">Subject - {feed?.subjects.sub_name}</span>
+              <span className="bg-green-200 text-green-500 rounded-full px-2 py-1">
+                Branch - {feed?.branch_name}
+              </span>
+              <span className="bg-green-200 text-green-500 rounded-full px-2 py-1">
+                Sem - {feed?.sem_no}
+              </span>
+              <span className="bg-green-200 text-green-500 rounded-full px-2 py-1">
+                Subject Code - {feed?.subjects.sub_code}
+              </span>
+              <span className="bg-green-200 text-green-500 rounded-full px-2 py-1">
+                Subject - {feed?.subjects.sub_name}
+              </span>
             </div>
             <div className="flex justify-end gap-5 py-3 px-2">
               <div className="flex gap-1 items-center">
