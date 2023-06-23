@@ -34,7 +34,7 @@ export default function ViewNotesPage() {
           <div className="relative w-full h-[700px_!important]">
             <iframe
               src={
-                feed?.file_url?.startsWith("p/")
+                feed?.file_url?.startsWith("f/")
                   ? SupaClient.storage.from("notes").getPublicUrl(feed.file_url)
                       .data.publicUrl
                   : feed?.file_url ?? ""
