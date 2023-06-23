@@ -15,7 +15,16 @@ export default function Test({
   return (
     <div className="bg-white w-full h-full rounded-md overflow-hidden border border-slate-300 cursor-pointer transition-all duration-200 hover:shadow-md">
       <div className="relative w-full h-52">
-        <Image src={"/quizBg.jpg"} fill alt="default-book-icon" />
+        <Image
+          src={faker.helpers.arrayElement([
+            "https://d28hgpri8am2if.cloudfront.net/book_images/onix/cvr9781440583810/math-geek-9781440583810_hr.jpg",
+            "https://m.media-amazon.com/images/I/91JLJ+dZOUL._AC_UF1000,1000_QL80_.jpg",
+            "https://i.pinimg.com/originals/17/23/89/1723894e4cd15ef0f972838e307b7830.jpg",
+            "https://m.media-amazon.com/images/I/911IjI1tl2L._AC_UF1000,1000_QL80_.jpg",
+          ])}
+          fill
+          alt="default-book-icon"
+        />
       </div>
       <div className="p-3">
         <div className="flex gap-2 items-center">
