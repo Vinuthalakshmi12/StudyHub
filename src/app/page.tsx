@@ -1,3 +1,4 @@
+"use client"
 import Button from "@/components/Button";
 import FCard from "@/components/featuredscard";
 import Link from "next/link";
